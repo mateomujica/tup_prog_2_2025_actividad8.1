@@ -37,6 +37,9 @@
             label3 = new Label();
             lsbDatos = new ListBox();
             btnActualizar = new Button();
+            btnImportar = new Button();
+            openFileDialog1 = new OpenFileDialog();
+            saveFileDialog1 = new SaveFileDialog();
             SuspendLayout();
             // 
             // btnProbar
@@ -117,11 +120,26 @@
             btnActualizar.UseVisualStyleBackColor = true;
             btnActualizar.Click += btnActualizar_Click;
             // 
+            // btnImportar
+            // 
+            btnImportar.Location = new Point(413, 209);
+            btnImportar.Name = "btnImportar";
+            btnImportar.Size = new Size(75, 23);
+            btnImportar.TabIndex = 9;
+            btnImportar.Text = "Importar";
+            btnImportar.UseVisualStyleBackColor = true;
+            btnImportar.Click += btnImportar_Click;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnImportar);
             Controls.Add(btnActualizar);
             Controls.Add(lsbDatos);
             Controls.Add(label3);
@@ -149,5 +167,8 @@
         private Label label3;
         private Button btnActualizar;
         public ListBox lsbDatos;
+        private Button btnImportar;
+        private OpenFileDialog openFileDialog1;
+        private SaveFileDialog saveFileDialog1;
     }
 }
