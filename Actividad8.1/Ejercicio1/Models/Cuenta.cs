@@ -14,7 +14,9 @@ namespace Ejercicio1.Models
         public double Importe {  get; set; }
         public Cuenta(string Nombre, int DNI, double Importe)
         {
-            this.Nombre = Nombre; this.DNI = DNI; this.Importe = Importe;
+            this.Nombre = Nombre;
+            this.DNI = DNI;
+            this.Importe = Importe;
         }
 
         public Cuenta (int DNI)

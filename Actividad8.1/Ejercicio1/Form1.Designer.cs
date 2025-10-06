@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnProbar = new Button();
+            btnConfirmar = new Button();
             tbxNombre = new TextBox();
             tbxDni = new TextBox();
             tbxMonto = new TextBox();
@@ -40,35 +40,36 @@
             btnImportar = new Button();
             openFileDialog1 = new OpenFileDialog();
             saveFileDialog1 = new SaveFileDialog();
+            btnExportar = new Button();
             SuspendLayout();
             // 
-            // btnProbar
+            // btnConfirmar
             // 
-            btnProbar.Location = new Point(244, 71);
-            btnProbar.Name = "btnProbar";
-            btnProbar.Size = new Size(75, 23);
-            btnProbar.TabIndex = 0;
-            btnProbar.Text = "Probar";
-            btnProbar.UseVisualStyleBackColor = true;
-            btnProbar.Click += btnProbar_Click;
+            btnConfirmar.Location = new Point(244, 71);
+            btnConfirmar.Name = "btnConfirmar";
+            btnConfirmar.Size = new Size(75, 23);
+            btnConfirmar.TabIndex = 0;
+            btnConfirmar.Text = "Confirmar";
+            btnConfirmar.UseVisualStyleBackColor = true;
+            btnConfirmar.Click += btnProbar_Click;
             // 
             // tbxNombre
             // 
-            tbxNombre.Location = new Point(118, 27);
+            tbxNombre.Location = new Point(125, 26);
             tbxNombre.Name = "tbxNombre";
             tbxNombre.Size = new Size(100, 23);
             tbxNombre.TabIndex = 1;
             // 
             // tbxDni
             // 
-            tbxDni.Location = new Point(118, 71);
+            tbxDni.Location = new Point(125, 70);
             tbxDni.Name = "tbxDni";
             tbxDni.Size = new Size(100, 23);
             tbxDni.TabIndex = 2;
             // 
             // tbxMonto
             // 
-            tbxMonto.Location = new Point(118, 123);
+            tbxMonto.Location = new Point(125, 117);
             tbxMonto.Name = "tbxMonto";
             tbxMonto.Size = new Size(100, 23);
             tbxMonto.TabIndex = 3;
@@ -76,7 +77,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(48, 35);
+            label1.Location = new Point(55, 34);
             label1.Name = "label1";
             label1.Size = new Size(51, 15);
             label1.TabIndex = 4;
@@ -85,7 +86,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(48, 79);
+            label2.Location = new Point(55, 78);
             label2.Name = "label2";
             label2.Size = new Size(25, 15);
             label2.TabIndex = 5;
@@ -94,7 +95,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(48, 126);
+            label3.Location = new Point(55, 117);
             label3.Name = "label3";
             label3.Size = new Size(43, 15);
             label3.TabIndex = 6;
@@ -112,7 +113,7 @@
             // 
             // btnActualizar
             // 
-            btnActualizar.Location = new Point(307, 209);
+            btnActualizar.Location = new Point(307, 167);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.Size = new Size(75, 23);
             btnActualizar.TabIndex = 8;
@@ -122,7 +123,7 @@
             // 
             // btnImportar
             // 
-            btnImportar.Location = new Point(413, 209);
+            btnImportar.Location = new Point(307, 207);
             btnImportar.Name = "btnImportar";
             btnImportar.Size = new Size(75, 23);
             btnImportar.TabIndex = 9;
@@ -134,11 +135,22 @@
             // 
             openFileDialog1.FileName = "openFileDialog1";
             // 
+            // btnExportar
+            // 
+            btnExportar.Location = new Point(307, 249);
+            btnExportar.Name = "btnExportar";
+            btnExportar.Size = new Size(75, 23);
+            btnExportar.TabIndex = 10;
+            btnExportar.Text = "Exportar";
+            btnExportar.UseVisualStyleBackColor = true;
+            btnExportar.Click += btnExportar_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnExportar);
             Controls.Add(btnImportar);
             Controls.Add(btnActualizar);
             Controls.Add(lsbDatos);
@@ -148,7 +160,7 @@
             Controls.Add(tbxMonto);
             Controls.Add(tbxDni);
             Controls.Add(tbxNombre);
-            Controls.Add(btnProbar);
+            Controls.Add(btnConfirmar);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -158,7 +170,7 @@
 
         #endregion
 
-        private Button btnProbar;
+        private Button btnConfirmar;
         private TextBox tbxNombre;
         private TextBox tbxDni;
         private TextBox tbxMonto;
@@ -170,5 +182,6 @@
         private Button btnImportar;
         private OpenFileDialog openFileDialog1;
         private SaveFileDialog saveFileDialog1;
+        private Button btnExportar;
     }
 }

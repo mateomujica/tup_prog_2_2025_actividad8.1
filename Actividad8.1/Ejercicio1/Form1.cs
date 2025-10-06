@@ -37,9 +37,6 @@ namespace Ejercicio1
                 cuentas.Add(cuenta);
             }
 
-
-
-
             tbxNombre.Clear();
             tbxDni.Clear();
             tbxMonto.Clear();
@@ -54,18 +51,6 @@ namespace Ejercicio1
             }
         }
 
-        //private void lsbDatos_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    Cuenta? c = lsbDatos.SelectedItem as Cuenta;
-
-        //    if (c != null)
-        //    {
-        //        tbxDni.Text = c.DNI.ToString();
-        //        tbxNombre.Text = c.Nombre;
-        //        tbxMonto.Text = c.Importe.ToString();
-
-        //    }
-        //}
         private void lsbDatos_SelectedValueChanged(object sender, EventArgs e)
 
         {
@@ -82,25 +67,77 @@ namespace Ejercicio1
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
-     
+
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string path = openFileDialog1.FileName;
+                FileStream fs = null; ;
+                StreamReader sr = null;
 
-                FileStream fs = new FileStream(path, FileMode.Open , FileAccess.Read);
-
-                StreamReader sr = new StreamReader(fs);
-
-                while (sr.EndOfStream == false)
+                try
                 {
-                    string line = sr.ReadLine();
-                    string dni = line.Substring(0, 9);
-                    string nombre = line.Substring(9, 10).Trim();
-                    string Importe = line.Substring(19,9);
+                    fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+                    sr = new StreamReader(fs);
 
-                    Cuenta c = new Cuenta(nombre, Convert.ToInt32(dni), Convert.ToDouble(Importe));
+                    while (sr.EndOfStream == false)
+                    {
+                        string line = sr.ReadLine();
+                        string dni = line.Substring(0, 9);
+                        string nombre = line.Substring(9, 10).Trim();
+                        string Importe = line.Substring(19, 9);
+
+                        Cuenta c = new Cuenta(nombre, Convert.ToInt32(dni), Convert.ToDouble(Importe));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    sr.Close();
+                    fs.Close();
                 }
             }
         }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string path = saveFileDialog1.FileName;
+                FileStream fs = null;
+                StreamWriter sw = null;
+                try
+                {
+                    fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
+
+                    sw = new StreamWriter(fs);
+
+                    foreach (Cuenta cuenta in cuentas)
+                    {
+                        string nombre = cuenta.Nombre;
+                        if (cuenta.Nombre.Length > 10)
+                            nombre = cuenta.Nombre.Substring(0, 10);
+
+                        string linea = $"{cuenta.DNI,+9}{nombre,-10}{cuenta.Importe,+9}";
+
+                        sw.WriteLine(linea);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    sw.Close();
+                    fs.Close();
+                }
+
+            }
+        }
+
     }
 }
+
