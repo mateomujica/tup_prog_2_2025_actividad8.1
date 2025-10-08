@@ -87,6 +87,20 @@ namespace Ejercicio1
                         string Importe = line.Substring(19, 9);
 
                         Cuenta c = new Cuenta(nombre, Convert.ToInt32(dni), Convert.ToDouble(Importe));
+                        if (c != null)
+                        {
+                            cuentas.Sort();
+                            int idx = cuentas.BinarySearch(c);
+                            if (idx >= 0)
+                            {
+                                cuentas[idx].Nombre = c.Nombre;
+                                cuentas[idx].Importe += c.Importe;
+                            }
+                            else
+                            {
+                                cuentas.Add(c);
+                            }
+                        }
                     }
                 }
                 catch (Exception ex)
